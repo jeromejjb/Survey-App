@@ -9,7 +9,7 @@ st.markdown("Fill out the survey below")
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 #Fetch existing survey
-existing_data = conn.read(worksheet="Surveys", usecols=list(range(7)), ttl=5)
+existing_data = conn.read(worksheet="Surveys", usecols=list(range(8)), ttl=5)
 existing_data = existing_data.dropna(how="all")
 
 #List of Survey types 
@@ -34,6 +34,7 @@ with st.form(key="survey_form"):
     manager_name = st.text_input(label="Manager Name")
     organizations = st.multiselect("Team", options=ORGANIZATIONS)
     engagement_level = st.slider("Engagement Level", 0,10,5)
+    resource_need = st.radio("Do you have the resources needed to do your job?", ["Yes","No"])
     onboarding_date = st.date_input(label="onboarding_date")
     additional_info = st.text_area(label="Any addtional info you'd like to share")
     
@@ -61,6 +62,7 @@ with st.form(key="survey_form"):
                         "Organizations": ", ".join(organizations),
                         "ManagerName": manager_name,
                         "EngagementLevel": engagement_level,
+                        "ResourceNeed" : resource_need,
                         "OnboardingDate": str(onboarding_date),
                         "AdditionalInfo": additional_info,
                     } 
