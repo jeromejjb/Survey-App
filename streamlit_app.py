@@ -17,7 +17,7 @@ SURVEY_TYPES = [
     "Engagement Survey",
     "Employee Recognition",
     "Pulse Check",
-    "Onboarding Surve",
+    "Onboarding Survey",
 ]
 ORGANIZATIONS = [
     "Information Technology",
