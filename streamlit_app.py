@@ -9,7 +9,7 @@ st.markdown("Fill out the survey below")
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 #Fetch existing survey
-existing_data = conn.read(worksheet="Surveys", usecols=list(range(6)), ttl=5)
+existing_data = conn.read(worksheet="Surveys", usecols=list(range(7)), ttl=5)
 existing_data = existing_data.dropna(how="all")
 
 #List of Survey types 
@@ -54,19 +54,17 @@ with st.form(key="survey_form"):
         else:
             
             survey_data = pd.DataFrame(
-             [
-                 {
-                     "EmployeeRole": employee_role,
-                     "BusinessOrg": business_org,
-                     "Organizations": ", ".join(organizations),
-                     "ManagerName": manager_name,
-                     "EngagementLevel": engagement_level,
-                     "OnboardingDate": str(onboarding_date),
-                     "AdditionalInfo": additional_info,
-                     
-
-                 } 
-             ]   
+                [
+                    {
+                        "EmployeeRole": employee_role,
+                        "BusinessOrg": business_org,
+                        "Organizations": ", ".join(organizations),
+                        "ManagerName": manager_name,
+                        "EngagementLevel": engagement_level,
+                        "OnboardingDate": str(onboarding_date),
+                        "AdditionalInfo": additional_info,
+                    } 
+                ]
             )
             
             updated_df = pd.concat([existing_data, survey_data], ignore_index=True)
