@@ -48,9 +48,9 @@ with st.form(key="survey_form"):
             st.warning("Please fill out mandatory fields")
             st.stop()
             
-        # elif existing_data["EmployeeRole"].str.contains(employee_role).any():
-        #     st.warning("An employee with this has already filled out this survey")
-        #     st.stop()
+        elif existing_data["EmployeeRole"].str.contains(employee_role).any():
+            st.warning("An employee with this has already filled out this survey")
+            st.stop()
         else:
             
             survey_data = pd.DataFrame(
