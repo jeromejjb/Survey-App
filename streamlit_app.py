@@ -35,7 +35,7 @@ with st.form(key="survey_form"):
     organizations = st.multiselect("Team", options=ORGANIZATIONS)
     engagement_level = st.slider("Engagement Level", 0,10,5)
     resource_need = st.radio("Do you have the resources needed to do your job?", ["Yes","No"])
-    onboarding_date = st.date_input(label="onboarding_date")
+    onboarding_date = st.date_input(label="Onboarding Date")
     additional_info = st.text_area(label="Any addtional info you'd like to share")
     
     #Mark mandatory fields 
